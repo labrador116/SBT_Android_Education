@@ -12,12 +12,12 @@ public class BankOffice implements IModelsBankOffice {
 
     private String mAddress;
     private String mName;
-    private int mDistance;
-    private String mWorkTime;
-    private PhoneNumberUtils mPhoneNumber;
+    private float mDistance;
+    private String[] mWorkTime;
+    private String mPhoneNumber;
     private int mRatingQualityOfWork;
 
-    public BankOffice(String address, String name, int distance, String workTime, PhoneNumberUtils phoneNumber, int ratingQualityOfWork) {
+    public BankOffice(String address, String name, float distance, String[] workTime, String phoneNumber, int ratingQualityOfWork) {
         mAddress = address;
         mName = name;
         mDistance = distance;
@@ -42,27 +42,27 @@ public class BankOffice implements IModelsBankOffice {
         mName = name;
     }
 
-    public int getDistance() {
+    public float getDistance() {
         return mDistance;
     }
 
-    public void setDistance(int distance) {
+    public void setDistance(float distance) {
         mDistance = distance;
     }
 
-    public String getWorkTime() {
+    public String[] getWorkTime() {
         return mWorkTime;
     }
 
-    public void setWorkTime(String workTime) {
+    public void setWorkTime(String[] workTime) {
         mWorkTime = workTime;
     }
 
-    public PhoneNumberUtils getPhoneNumber() {
+    public String getPhoneNumber() {
         return mPhoneNumber;
     }
 
-    public void setPhoneNumber(PhoneNumberUtils phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         mPhoneNumber = phoneNumber;
     }
 
