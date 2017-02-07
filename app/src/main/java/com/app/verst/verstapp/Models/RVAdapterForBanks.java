@@ -31,6 +31,12 @@ public class RVAdapterForBanks extends RecyclerView.Adapter<BanksViewHolder> {
     @Override
     public BanksViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.relative_layout_view_for_recycle_view,viewGroup,false);
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("qqqq");
+            }
+        });
         BanksViewHolder mBanksViewHolder=new BanksViewHolder(v);
         return mBanksViewHolder;
     }
@@ -39,7 +45,7 @@ public class RVAdapterForBanks extends RecyclerView.Adapter<BanksViewHolder> {
     public void onBindViewHolder(BanksViewHolder holder, int position) {
         holder.getBankAddress().setText(mBankOffices.get(position).getAddress());
         holder.getBankName().setText(mBankOffices.get(position).getName());
-        holder.getBankDistance().setText(((String.valueOf(mBankOffices.get(position).getDistance()))));
+        holder.getBankDistance().setText(((String.valueOf(mBankOffices.get(position).getDistance())+" км.")));
     }
 
     @Override

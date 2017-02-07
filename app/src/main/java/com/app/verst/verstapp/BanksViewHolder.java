@@ -23,7 +23,7 @@ public class BanksViewHolder extends RecyclerView.ViewHolder {
         mCardView=(CardView) itemView.findViewById(R.id.list_of_banks_card_view);
         mBankAddress = (TextView) itemView.findViewById(R.id.address_text_view);
         mBankName = (TextView) itemView.findViewById(R.id.bank_name_text_view);
-        mBankDistance = (TextView) itemView.findViewById(R.id.distance_text_view);
+        mBankDistance = (TextView) itemView.findViewById(R.id.distance_view_text_view);
     }
 
     public CardView getCardView() {
