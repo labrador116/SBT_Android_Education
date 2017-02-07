@@ -1,5 +1,6 @@
 package com.app.verst.verstapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -29,16 +30,8 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mRecyclerViewForBanks.setLayoutManager(linearLayoutManager);
 
-        RVAdapterForBanks adapterForBanks = new RVAdapterForBanks(mBanksList);
+        RVAdapterForBanks adapterForBanks = new RVAdapterForBanks(mBanksList,MainActivity.this);
         mRecyclerViewForBanks.setAdapter(adapterForBanks);
-
-        mRecyclerViewForBanks.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("111");
-            }
-        });
-
     }
 
 

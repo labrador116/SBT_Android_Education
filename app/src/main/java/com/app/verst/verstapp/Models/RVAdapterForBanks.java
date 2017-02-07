@@ -1,15 +1,20 @@
 package com.app.verst.verstapp.Models;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.support.v7.app.AppCompatActivity;
 import com.app.verst.verstapp.BanksViewHolder;
+import com.app.verst.verstapp.InformationAboutBank;
+import com.app.verst.verstapp.MainActivity;
 import com.app.verst.verstapp.Models.Models_Impl.BankOffice;
 import com.app.verst.verstapp.R;
 
 import java.util.List;
+
 
 /**
  * Created by magaz on 07.02.2017.
@@ -18,9 +23,12 @@ import java.util.List;
 public class RVAdapterForBanks extends RecyclerView.Adapter<BanksViewHolder> {
 
     List<BankOffice> mBankOffices;
+    Activity mActivity;
 
-    public RVAdapterForBanks(List<BankOffice> bankOffices) {
+    public RVAdapterForBanks(List<BankOffice> bankOffices,Activity activity) {
+
         mBankOffices = bankOffices;
+        mActivity=activity;
     }
 
     @Override
@@ -34,7 +42,8 @@ public class RVAdapterForBanks extends RecyclerView.Adapter<BanksViewHolder> {
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("qqqq");
+                Intent intent = new Intent(mActivity, InformationAboutBank.class);
+                mActivity.startActivity(intent);
             }
         });
         BanksViewHolder mBanksViewHolder=new BanksViewHolder(v);
