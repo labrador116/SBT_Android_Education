@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void initializiationBanks(){
+    private void initializationBanks(){
 
         mWorkTime[0]="09:00-18:00";
         mWorkTime[1]="09:00-18:00";
@@ -35,9 +35,5 @@ public class MainActivity extends AppCompatActivity {
         mBanksList[2]=new BankOffice("Спортивная, 5","Банк №3", 8.9f, mWorkTime, PhoneNumberUtils.formatNumber("8917000000","Ru"), 0);
         mBanksList[3]=new BankOffice("Спортивная, 5","Банк №4", 18.2f, mWorkTime, PhoneNumberUtils.formatNumber("8917000000","Ru"), 0);
         mBanksList[4]=new BankOffice("Спортивная, 5","Банк №5", 24.6f, mWorkTime, PhoneNumberUtils.formatNumber("8917000000","Ru"), 0);
-
-
-
-
     }
 }
