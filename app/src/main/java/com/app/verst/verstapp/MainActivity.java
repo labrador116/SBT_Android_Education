@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mRecyclerViewForBanks.setLayoutManager(linearLayoutManager);
-
         RVAdapterForBanks adapterForBanks = new RVAdapterForBanks(mBanksList,MainActivity.this);
         mRecyclerViewForBanks.setAdapter(adapterForBanks);
     }

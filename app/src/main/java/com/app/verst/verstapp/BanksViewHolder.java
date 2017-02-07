@@ -14,7 +14,7 @@ public class BanksViewHolder extends RecyclerView.ViewHolder {
     private TextView mBankAddress;
     private TextView mBankName;
     private TextView mBankDistance;
-   // private TextView[] mBankWorkTime;
+    //private TextView[] mBankWorkTime;
     //private String mBankPhoneNumber;
     //private int mBankRatingQualityOfWork;
 
