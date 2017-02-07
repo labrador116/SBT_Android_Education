@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@android:color/white"
+              android:padding="@dimen/main_linear_padding">
+
+
+    <ImageView
+        android:id="@+id/icon_view"
+        android:layout_width="@android:dimen/app_icon_size"
+        android:layout_height="@android:dimen/app_icon_size"
+        android:background="@drawable/oval"
+        android:padding="@dimen/icon_view_padding"
+        android:src="@drawable/ic_location_city_black_24dp"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_left_for_address_second"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:paddingTop="@dimen/padding_top_for_address_second"
+            android:text="@string/address"
+            android:textSize="@dimen/text_size_for_address_second"
+            />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:text="@string/office_text_view"
+            android:textSize="@dimen/text_size_for_description_second"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/padding_top_for_distance_second"
+        android:text="@string/distance"
+        android:textSize="@dimen/text_size_for_distance_second"
+        />
+
+</LinearLayout>

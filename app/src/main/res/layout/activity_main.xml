@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@android:color/white"
+    tools:context="com.app.verst.verstapp.MainActivity">
+
+    <ImageView
+        android:id="@+id/oval_element_image_view"
+        android:layout_width="@android:dimen/app_icon_size"
+        android:layout_height="@android:dimen/app_icon_size"
+        android:layout_marginLeft="@android:dimen/dialog_min_width_minor"
+        android:background="@drawable/oval"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/left_from_oval_image_view"
+        android:paddingTop="@dimen/top_from_oval_image_view"
+        android:src="@drawable/ic_location_city_black_24dp"/>
+
+    <TextView
+        android:id="@+id/address_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/oval_element_image_view"
+        android:layout_marginLeft="@dimen/margin_left_for_address_image_view"
+        android:maxLines="2"
+        android:text="@string/address"
+        android:paddingTop="@dimen/padding_top_for_address_image_view"
+        android:textSize="@dimen/text_size_for_address_image_view"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/oval_element_image_view"
+        android:layout_alignLeft="@id/address_text_view"
+        android:layout_below="@id/address_text_view"
+        android:maxLines="2"
+        android:text="@string/office_text_view"
+        android:textSize="@dimen/text_size_for_description_text_view"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/address_text_view"
+        android:maxLines="2"
+        android:text="@string/distance"
+        android:layout_marginLeft="@dimen/margin_left_for_distance_text_view"
+        android:paddingTop="@dimen/padding_top_for_distance_text_view"
+        android:textSize="@dimen/text_size_for_distance_text_view"
+        />
+</RelativeLayout>

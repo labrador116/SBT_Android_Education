@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">VerstApp</string>
+    <string name="address">Вавилова, 23</string>
+    <string name="office_text_view">Доп. офис №999999999999</string>
+    <string name="distance">12 км.</string>
+    <string name="state_name_image_view">Состояние:</string>
+    <string name="status">Работает</string>
+    <string name="monday">Понедельник</string>
+    <string name="tuesday">Вторник</string>
+    <string name="wednesday">Среда</string>
+    <string name="thursday">Четверг</string>
+    <string name="friday">Пятница</string>
+    <string name="saturday">Суббота</string>
+    <string name="sunday">Воскресенье</string>
+    <string name="timework">10:00-19:00</string>
+    <string name="close">Закрыто</string>
+    <string name="phone_description">Телефон для справок</string>
+    <string name="phone_number">+7(800)555-55-50</string>
+
+</resources>

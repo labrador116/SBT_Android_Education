@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="main_linear_padding">10dp</dimen>
+
+    <dimen name="icon_view_padding">6dp</dimen>
+
+    <dimen name="margin_left_for_address_second">30dp</dimen>
+    <dimen name="padding_top_for_address_second">8dp</dimen>
+    <dimen name="text_size_for_address_second">17sp</dimen>
+    <dimen name="text_size_for_description_second">12sp</dimen>
+    <dimen name="text_size_for_distance_second">14sp</dimen>
+    <dimen name="padding_top_for_distance_second">20dp</dimen>
+
+
+</resources>
