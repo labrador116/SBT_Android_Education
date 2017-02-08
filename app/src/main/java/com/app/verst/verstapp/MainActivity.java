@@ -1,22 +1,24 @@
 package com.app.verst.verstapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.telephony.PhoneNumberUtils;
-import android.view.View;
+import android.widget.Toast;
 
-import com.app.verst.verstapp.Models.Models_Impl.BankOffice;
-import com.app.verst.verstapp.Models.RVAdapterForBanks;
+import com.app.verst.verstapp.models.Models_Impl.BankOffice;
+import com.app.verst.verstapp.models.BankOfficeAdapter;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<BankOffice> mBanksList=new ArrayList<BankOffice>();
+    static ArrayList<BankOffice> mBanksList=new ArrayList<BankOffice>();
     String[] mWorkTime=new String[7];
+    private float mAnswerRating;
 
 
     @Override
@@ -29,10 +31,21 @@ public class MainActivity extends AppCompatActivity {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mRecyclerViewForBanks.setLayoutManager(linearLayoutManager);
-        RVAdapterForBanks adapterForBanks = new RVAdapterForBanks(mBanksList,MainActivity.this);
+        BankOfficeAdapter adapterForBanks = new BankOfficeAdapter(mBanksList,MainActivity.this);
         mRecyclerViewForBanks.setAdapter(adapterForBanks);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (resultCode!= Activity.RESULT_OK)
+            return;
+        if (data!=null){
+            mAnswerRating=InformationAboutBank.getRatingFromBankOfficeDetailsActivity(data);
+        }
+
+        Toast.makeText(MainActivity.this, "Вы оценили отделение банка на "+mAnswerRating,Toast.LENGTH_SHORT ).show();
+    }
 
     private void initializationBanks(){
 
@@ -41,18 +54,18 @@ public class MainActivity extends AppCompatActivity {
         mWorkTime[2]="09:00-18:00";
         mWorkTime[3]="09:00-18:00";
         mWorkTime[4]="09:00-18:00";
-        mWorkTime[5]="Выходной";
+        mWorkTime[5]="День счастья";
         mWorkTime[6]="Выходной";
 
         mBanksList.add(new BankOffice("Спортивная, 5","Банк №1", 1.3f, mWorkTime,
                 "8917000000", 0));
         mBanksList.add(new BankOffice("Спортивная, 6","Банк №2", 3.6f, mWorkTime,
-                PhoneNumberUtils.formatNumber("8917000000","Ru"), 0));
+                "8917000000", 0));
         mBanksList.add(new BankOffice("Спортивная, 7","Банк №3", 8.9f, mWorkTime,
-                PhoneNumberUtils.formatNumber("8917000000","Ru"), 0));
+                "8917000000", 0));
         mBanksList.add(new BankOffice("Спортивная, 8","Банк №4", 18.2f, mWorkTime,
-                PhoneNumberUtils.formatNumber("8917000000","Ru"), 0));
+                "8917000000", 0));
         mBanksList.add(new BankOffice("Спортивная, 9","Банк №5", 24.6f, mWorkTime,
-                PhoneNumberUtils.formatNumber("8917000000","Ru"), 0));
+                "8917000000", 0));
     }
 }

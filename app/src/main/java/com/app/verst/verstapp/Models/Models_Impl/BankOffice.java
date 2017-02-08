@@ -1,16 +1,13 @@
-package com.app.verst.verstapp.Models.Models_Impl;
+package com.app.verst.verstapp.models.Models_Impl;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.telephony.PhoneNumberUtils;
-
-import com.app.verst.verstapp.Models.IModelsBankOffice;
 
 /**
  * Created by magaz on 07.02.2017.
  */
 
-public class BankOffice implements IModelsBankOffice, Parcelable {
+public class BankOffice implements Parcelable {
 
     private String mAddress;
     private String mName;
