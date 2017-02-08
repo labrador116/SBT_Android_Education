@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.bank_office_list_activity);
         initializationBanks();
 
         RecyclerView mRecyclerViewForBanks = (RecyclerView) findViewById(R.id.recycler_view_for_list_of_banks);

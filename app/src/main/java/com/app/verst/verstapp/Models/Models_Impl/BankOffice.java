@@ -1,5 +1,7 @@
 package com.app.verst.verstapp.Models.Models_Impl;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.telephony.PhoneNumberUtils;
 
 import com.app.verst.verstapp.Models.IModelsBankOffice;
@@ -8,7 +10,7 @@ import com.app.verst.verstapp.Models.IModelsBankOffice;
  * Created by magaz on 07.02.2017.
  */
 
-public class BankOffice implements IModelsBankOffice {
+public class BankOffice implements IModelsBankOffice, Parcelable {
 
     private String mAddress;
     private String mName;
@@ -24,6 +26,42 @@ public class BankOffice implements IModelsBankOffice {
         mWorkTime = workTime;
         mPhoneNumber = phoneNumber;
         mRatingQualityOfWork = ratingQualityOfWork;
+    }
+
+    protected BankOffice(Parcel in) {
+        mAddress = in.readString();
+        mName = in.readString();
+        mDistance = in.readFloat();
+        mWorkTime = in.createStringArray();
+        mPhoneNumber = in.readString();
+        mRatingQualityOfWork = in.readInt();
+    }
+
+    public static final Creator<BankOffice> CREATOR = new Creator<BankOffice>() {
+        @Override
+        public BankOffice createFromParcel(Parcel in) {
+            return new BankOffice(in);
+        }
+
+        @Override
+        public BankOffice[] newArray(int size) {
+            return new BankOffice[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(mAddress);
+        dest.writeString(mName);
+        dest.writeFloat(mDistance);
+        dest.writeStringArray(mWorkTime);
+        dest.writeString(mPhoneNumber);
+        dest.writeInt(mRatingQualityOfWork);
     }
 
     public String getAddress() {

@@ -15,7 +15,7 @@ public class InformationAboutBank extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.third_activiy);
+        setContentView(R.layout.bank_office_item);
 
         mAddressOfBank=getIntent().getStringExtra(EXTRA_ADDRESS_FOR_SECOND_ACTIVITY);
         TextView addressView = (TextView)findViewById(R.id.third_address_text_view);

@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:background="@android:color/white">
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/third_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="@android:color/white"
     tools:context="com.app.verst.verstapp.InformationAboutBank">
 
     <RelativeLayout
@@ -46,7 +50,7 @@
             android:id="@+id/arrow_image_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_subdirectory_arrow_right_black_24dp"
+            android:src="@drawable/ic_subdirectory_arrow_right_black_24dp_vector"
             android:background="@android:color/holo_green_light"
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/margin_left_for_arrow_image_button"
@@ -79,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/head_relative"
-        android:src="@drawable/ic_mood_black_24dp"
+        android:src="@drawable/ic_mood_black_24dp_vector"
         android:layout_marginTop="@dimen/margin_top_for_smile_image_view"
         android:layout_marginLeft="@dimen/margin_left_for_smile_image_view"
         />
@@ -144,7 +148,8 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="@dimen/margin_right_for_phone_button_image_view"
         android:layout_marginTop="@dimen/margin_top_for_phone_button_image_view"
-        android:src="@drawable/ic_phone_black_24dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_phone_black_24dp_vector"
         android:background="@android:color/transparent"
         />
 
@@ -159,13 +164,12 @@
         android:maxLines="2"
        />
 
-    <Button
+    <TextView
         android:id="@+id/phone_number_button"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/layout_height_for_phone_number_button"
+        android:layout_height="wrap_content"
         android:layout_below="@id/id_phone_description_text_view_button"
         android:layout_toLeftOf="@id/phone_button_image_view"
-        android:layout_marginRight="@dimen/margin_right_for_phone_number"
         android:layout_alignLeft="@id/id_phone_description_text_view_button"
         android:text="@string/phone_number"
         android:background="@android:color/transparent"
@@ -174,8 +178,5 @@
 
 
 </RelativeLayout>
+</ScrollView>
 
-
-<!--//Code convention-->
-<!--//vertical line + clickable-->
-<!--//Pnone will make layout and clickable-->

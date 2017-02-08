@@ -28,13 +28,25 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/left_from_oval_image_view"
         android:paddingTop="@dimen/top_from_oval_image_view"
-        android:src="@drawable/ic_location_city_black_24dp"/>
+        android:src="@drawable/ic_location_city_black_24dp_vector"/>
+
+    <TextView
+        android:id="@+id/distance_view_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:maxLines="2"
+        android:text="@string/distance"
+        android:layout_marginLeft="@dimen/margin_left_for_distance_text_view"
+        android:paddingTop="@dimen/padding_top_for_distance_text_view"
+        android:textSize="@dimen/text_size_for_distance_text_view"/>
 
     <TextView
         android:id="@+id/address_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/oval_element_image_view"
+        android:layout_toLeftOf="@id/distance_view_text_view"
         android:layout_marginLeft="@dimen/margin_left_for_address_image_view"
         android:maxLines="2"
         android:text="@string/address"
@@ -46,6 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/oval_element_image_view"
+        android:layout_toLeftOf="@id/distance_view_text_view"
         android:layout_alignLeft="@id/address_text_view"
         android:layout_below="@id/address_text_view"
         android:maxLines="2"
@@ -53,15 +66,6 @@
         android:textSize="@dimen/text_size_for_description_text_view"
         />
 
-    <TextView
-        android:id="@+id/distance_view_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/address_text_view"
-        android:maxLines="2"
-        android:text="@string/distance"
-        android:layout_marginLeft="@dimen/margin_left_for_distance_text_view"
-        android:paddingTop="@dimen/padding_top_for_distance_text_view"
-        android:textSize="@dimen/text_size_for_distance_text_view"/>
+
 </RelativeLayout>
 </android.support.v7.widget.CardView>

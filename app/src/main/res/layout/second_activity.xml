@@ -12,7 +12,7 @@
         android:layout_height="@android:dimen/app_icon_size"
         android:background="@drawable/oval"
         android:padding="@dimen/icon_view_padding"
-        android:src="@drawable/ic_location_city_black_24dp"/>
+        android:src="@drawable/ic_location_city_black_24dp_vector"/>
 
     <LinearLayout
         android:layout_width="0dp"

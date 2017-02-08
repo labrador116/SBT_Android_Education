@@ -29,6 +29,7 @@ public class RVAdapterForBanks extends RecyclerView.Adapter<BanksViewHolder> {
     String address;
 
     public final static String EXTRA_ADDRESS_FOR_SECOND_ACTIVITY="com.app.verst.verstapp.BanksViewHolder.addressOfBank";
+
     public RVAdapterForBanks(List<BankOffice> bankOffices,Activity activity) {
 
         mBankOffices = bankOffices;
@@ -42,7 +43,9 @@ public class RVAdapterForBanks extends RecyclerView.Adapter<BanksViewHolder> {
 
     @Override
     public BanksViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.relative_layout_view_for_recycle_view,viewGroup,false);
+
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.bank_office_item,viewGroup,false);
+
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,8 +64,6 @@ public class RVAdapterForBanks extends RecyclerView.Adapter<BanksViewHolder> {
         holder.getBankAddress().setText(mBankOffices.get(position).getAddress());
         holder.getBankName().setText(mBankOffices.get(position).getName());
         holder.getBankDistance().setText(((String.valueOf(mBankOffices.get(position).getDistance())+" км.")));
-
-        address=mBankOffices.get(position).getAddress();
     }
 
     @Override
