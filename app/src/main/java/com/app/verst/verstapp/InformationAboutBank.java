@@ -13,8 +13,8 @@ import com.app.verst.verstapp.models.Models_Impl.BankOffice;
 
 public class InformationAboutBank extends AppCompatActivity {
 
-    private final static String EXTRA_ADDRESS_FOR_SECOND_ACTIVITY="com.app.verst.verstapp.BanksViewHolder.addressOfBank";
-    private final static String EXTRA_ANSWER_WITH_RATING="com.app.verst.verstapp.InformationAboutBank.ratingOfThisBank";
+    private final static String EXTRA_ADDRESS_FOR_SECOND_ACTIVITY="com.app.verst.verstapp.BanksViewHolderForFragments.addressOfBank";
+    private final static String EXTRA_ANSWER_WITH_RATING="com.app.verst.verstapp.InformationAboutBankFragment.ratingOfThisBank";
     private final static int REQUEST_CODE=0;
 
     private BankOffice mBankoffice;
@@ -99,13 +99,8 @@ public class InformationAboutBank extends AppCompatActivity {
         phoneOfBankOffice.setText(mBankoffice.getPhoneNumber());
     }
 
-    public static void starBankOfficeDetailActivity(Activity mActivity, View v, int pozition){
+    public static void starBankOfficeDetailActivity(Activity mActivity,BankOffice bankOffice ){
         Intent intent = new Intent(mActivity, InformationAboutBank.class);
-        TextView textView=(TextView)v.findViewById(R.id.address_text_view);
-
-        BankOffice bankOffice = MainActivity.mBanksList.get(pozition);
-
-
         intent.putExtra(InformationAboutBank.EXTRA_ADDRESS_FOR_SECOND_ACTIVITY,bankOffice);
         mActivity.startActivityForResult(intent, REQUEST_CODE);
     }
