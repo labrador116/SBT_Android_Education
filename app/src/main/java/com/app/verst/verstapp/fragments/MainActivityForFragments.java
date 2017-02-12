@@ -1,9 +1,8 @@
 package com.app.verst.verstapp.fragments;
 
-import android.app.Activity;
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
@@ -11,9 +10,9 @@ import android.widget.Toast;
 import com.app.verst.verstapp.R;
 import com.app.verst.verstapp.models.Models_Impl.BankOffice;
 
-public class MainActivityForFragments extends AppCompatActivity implements BankOfficeAdapterForFragments.OnSelectedRateListener {
-    private float mAnswerRating;
+public class MainActivityForFragments extends AppCompatActivity implements BankOfficeAdapterForFragments.OnSelectedRateListener, ArticleListFragment.OnTouchBankOffice {
 
+    private float mAnswerRating;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,14 +21,11 @@ public class MainActivityForFragments extends AppCompatActivity implements BankO
 
         ArticleListFragment fragment = new ArticleListFragment();
         getFragmentManager().beginTransaction().add(R.id.bank_office_activity_for_fragment,fragment, "ArtList").addToBackStack("ArticleList").commit();
-
     }
 
 
     @Override
     public void onBackPressed() {
-
-
         FragmentManager fragmentManager = getFragmentManager();
 
         if(fragmentManager.getBackStackEntryCount()==1){
@@ -38,7 +34,6 @@ public class MainActivityForFragments extends AppCompatActivity implements BankO
         } else {
                 if(fragmentManager.getBackStackEntryCount()>0) {
                 fragmentManager.popBackStack("move_in_detail_card", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                    String nameFragmentInBackStack = fragmentManager.getBackStackEntryAt(fragmentManager.getBackStackEntryCount()-1).getName();
                     if ( mAnswerRating > 0) {
                         Toast.makeText(MainActivityForFragments.this, "Вы оценили отделение банка на " + mAnswerRating, Toast.LENGTH_SHORT).show();
                     }
@@ -49,5 +44,12 @@ public class MainActivityForFragments extends AppCompatActivity implements BankO
     @Override
     public void onRateSelected(float rate) {
         mAnswerRating=rate;
+    }
+
+    @Override
+    public void touchOnItem(BankOffice bankOffice) {
+        Fragment fragment = getFragmentManager().findFragmentByTag("ArtList");
+        InformationAboutBankFragment.createInformationAboutBankFragment(bankOffice,fragment);
+        mAnswerRating=0;
     }
 }

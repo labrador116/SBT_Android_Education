@@ -4,21 +4,13 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
-
 import com.app.verst.verstapp.R;
-
-/**
- * Created by magaz on 07.02.2017.
- */
 
 public class BanksViewHolderForFragments extends RecyclerView.ViewHolder {
     private CardView mCardView;
     private TextView mBankAddress;
     private TextView mBankName;
     private TextView mBankDistance;
-    //private TextView[] mBankWorkTime;
-    //private String mBankPhoneNumber;
-    //private int mBankRatingQualityOfWork;
 
     public BanksViewHolderForFragments(View itemView) {
         super(itemView);

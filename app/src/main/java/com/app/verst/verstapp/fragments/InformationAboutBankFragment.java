@@ -1,7 +1,8 @@
 package com.app.verst.verstapp.fragments;
 
 import android.app.Fragment;
-import android.content.Intent;
+import android.app.FragmentTransaction;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -9,35 +10,51 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
-
 import com.app.verst.verstapp.R;
 import com.app.verst.verstapp.models.Models_Impl.BankOffice;
 
 public class InformationAboutBankFragment extends Fragment {
 
-    public final static String EXTRA_ADDRESS_FOR_SECOND_ACTIVITY="com.app.verst.verstapp.BanksViewHolderForFragments.addressOfBank";
+    private final static String EXTRA_ADDRESS_FOR_SECOND_ACTIVITY="com.app.verst.verstapp.BanksViewHolderForFragments.addressOfBank";
     private final static String EXTRA_ANSWER_WITH_RATING="com.app.verst.verstapp.InformationAboutBankFragment.ratingOfThisBank";
-    private final static int REQUEST_CODE=0;
 
     private BankOffice mBankoffice;
     private float mRatingOfThisBankOffice;
+    private View mView;
+
+    public static void createInformationAboutBankFragment(BankOffice bankOffice, Fragment fragment){
+        InformationAboutBankFragment informationAboutBank = new InformationAboutBankFragment();
+        Bundle args = new Bundle();
+
+        args.putParcelable(InformationAboutBankFragment.EXTRA_ADDRESS_FOR_SECOND_ACTIVITY, bankOffice);
+        informationAboutBank.setArguments(args);
+
+        FragmentTransaction fragmentTransaction = fragment.getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.bank_office_activity_for_fragment,informationAboutBank);
+        fragmentTransaction.addToBackStack("move_in_detail_card");
+        fragmentTransaction.commit();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.bank_office_detail_view_for_fragment, container, false);
 
-        fillBankDetailActivity(view);
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+             mView= inflater.inflate(R.layout.bank_office_detail_view_for_fragment, container, false);
+        }
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            mView = inflater.inflate(R.layout.bank_office_list_fragment, container, false);
+        }
 
-        RatingBar ratingBarOfBank = (RatingBar) view.findViewById(R.id.rating_in_bank_office_details_activity_rating_bar);
+        fillBankDetailActivity(mView);
+
+        RatingBar ratingBarOfBank = (RatingBar) mView.findViewById(R.id.rating_in_bank_office_details_activity_rating_bar);
         ratingBarOfBank.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-
 
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
@@ -48,10 +65,9 @@ public class InformationAboutBankFragment extends Fragment {
 
                 Bundle resultData = new Bundle();
                 resultData.putFloat(EXTRA_ANSWER_WITH_RATING,mRatingOfThisBankOffice);
-                //setResult(RESULT_OK,resultData);
             }
         });
-        return view;
+        return mView;
     }
 
     public void fillBankDetailActivity(View view) {
@@ -107,13 +123,5 @@ public class InformationAboutBankFragment extends Fragment {
         }
         TextView phoneOfBankOffice = (TextView)view.findViewById(R.id.phone_number_button);
         phoneOfBankOffice.setText(mBankoffice.getPhoneNumber());
-    }
-
-    public static float getRatingFromBankOfficeDetailsActivity(Intent intent){
-        return intent.getFloatExtra(EXTRA_ANSWER_WITH_RATING, 0);
-    }
-
-    public interface OnSelectedRateListener {
-        void onRateSelected(float rateValue);
     }
 }

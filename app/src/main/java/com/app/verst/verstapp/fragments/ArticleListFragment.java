@@ -1,27 +1,25 @@
 package com.app.verst.verstapp.fragments;
 
 import android.app.Fragment;
-import android.app.FragmentTransaction;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
 import com.app.verst.verstapp.R;
 import com.app.verst.verstapp.models.Models_Impl.BankOffice;
-
 import java.util.ArrayList;
 
 public class ArticleListFragment extends Fragment {
 
-    BankOfficeAdapterForFragments mAdapterForFragments;
-    float mRateValue;
+    public interface OnTouchBankOffice{
+         void touchOnItem(BankOffice bankOffice);
+    }
 
+    BankOfficeAdapterForFragments mAdapterForFragments;
+    private OnTouchBankOffice mCallback;
+    float mRateValue;
 
     ArrayList<BankOffice> mBanksList=new ArrayList<BankOffice>();
     String[] mWorkTime=new String[7];
@@ -30,18 +28,16 @@ public class ArticleListFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initializationBanks();
-        mAdapterForFragments = new BankOfficeAdapterForFragments(mBanksList,ArticleListFragment.this);
+        mCallback=(OnTouchBankOffice) getActivity();
+        mAdapterForFragments = new BankOfficeAdapterForFragments(mBanksList,mCallback);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view=inflater.inflate(R.layout.bank_office_list_fragment, container, false);
 
         RecyclerView mRecyclerViewForBanks = (RecyclerView) view.findViewById(R.id.recycler_view_for_list_of_banks_fragment);
-
-       // mRecyclerViewForBanks.addOnItemTouchListener(new Rec);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
 
@@ -51,7 +47,6 @@ public class ArticleListFragment extends Fragment {
 
         return view;
     }
-
 
     private void initializationBanks(){
 
@@ -75,20 +70,6 @@ public class ArticleListFragment extends Fragment {
                 "8917000000", 0));
     }
 
-
-    public void starBankOfficeDetailActivity(BankOffice bankOffice){
-        InformationAboutBankFragment informationAboutBank = new InformationAboutBankFragment();
-        Bundle args = new Bundle();
-
-        args.putParcelable(InformationAboutBankFragment.EXTRA_ADDRESS_FOR_SECOND_ACTIVITY,bankOffice);
-        informationAboutBank.setArguments(args);
-
-        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_detail_container,informationAboutBank);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
-    }
-
     public float getRateValue() {
         return mRateValue;
     }
@@ -96,6 +77,9 @@ public class ArticleListFragment extends Fragment {
     public void setRateValue(float rateValue) {
         mRateValue = rateValue;
     }
+
+
+
 
 
 }

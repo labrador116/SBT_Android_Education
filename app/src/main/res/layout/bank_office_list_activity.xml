@@ -4,7 +4,6 @@
               android:id="@+id/bank_office_list_activity"
               android:layout_height="match_parent"
               android:layout_width="match_parent"
-              tools:context="com.app.verst.verstapp.MainActivity"
               android:orientation="horizontal">
     
     <android.support.v7.widget.RecyclerView
