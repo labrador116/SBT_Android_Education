@@ -19,8 +19,11 @@ public class MainActivityForFragments extends AppCompatActivity implements BankO
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bank_office_activity_for_fragment);
 
-        ArticleListFragment fragment = new ArticleListFragment();
-        getFragmentManager().beginTransaction().add(R.id.bank_office_activity_for_fragment,fragment, "ArtList").addToBackStack("ArticleList").commit();
+        if (getFragmentManager().findFragmentByTag("ArtList")==null) {
+            ArticleListFragment fragment = new ArticleListFragment();
+            if (getResources().getConfiguration().ORIENTATION_LANDSCAPE != getResources().getConfiguration().orientation)
+                getFragmentManager().beginTransaction().add(R.id.bank_office_activity_for_fragment, fragment, "ArtList").addToBackStack("ArticleList").commit();
+        }
     }
 
 
@@ -48,8 +51,19 @@ public class MainActivityForFragments extends AppCompatActivity implements BankO
 
     @Override
     public void touchOnItem(BankOffice bankOffice) {
-        Fragment fragment = getFragmentManager().findFragmentByTag("ArtList");
-        InformationAboutBankFragment.createInformationAboutBankFragment(bankOffice,fragment);
+        Fragment fragment = InformationAboutBankFragment.createInformationAboutBankFragment(bankOffice);
+
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.bank_office_activity_for_fragment,fragment);
+        fragmentTransaction.addToBackStack("move_in_detail_card");
+        fragmentTransaction.commit();
+
+
         mAnswerRating=0;
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+
     }
 }

@@ -22,17 +22,16 @@ public class InformationAboutBankFragment extends Fragment {
     private float mRatingOfThisBankOffice;
     private View mView;
 
-    public static void createInformationAboutBankFragment(BankOffice bankOffice, Fragment fragment){
+    public static InformationAboutBankFragment createInformationAboutBankFragment(BankOffice bankOffice){
         InformationAboutBankFragment informationAboutBank = new InformationAboutBankFragment();
         Bundle args = new Bundle();
 
         args.putParcelable(InformationAboutBankFragment.EXTRA_ADDRESS_FOR_SECOND_ACTIVITY, bankOffice);
         informationAboutBank.setArguments(args);
 
-        FragmentTransaction fragmentTransaction = fragment.getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.bank_office_activity_for_fragment,informationAboutBank);
-        fragmentTransaction.addToBackStack("move_in_detail_card");
-        fragmentTransaction.commit();
+        return informationAboutBank;
+
+
     }
 
     @Override
@@ -44,12 +43,8 @@ public class InformationAboutBankFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
              mView= inflater.inflate(R.layout.bank_office_detail_view_for_fragment, container, false);
-        }
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            mView = inflater.inflate(R.layout.bank_office_list_fragment, container, false);
-        }
+
 
         fillBankDetailActivity(mView);
 

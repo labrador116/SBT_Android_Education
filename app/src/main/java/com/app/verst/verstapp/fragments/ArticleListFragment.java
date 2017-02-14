@@ -1,6 +1,7 @@
 package com.app.verst.verstapp.fragments;
 
 import android.app.Fragment;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,13 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.app.verst.verstapp.R;
 import com.app.verst.verstapp.models.Models_Impl.BankOffice;
+
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class ArticleListFragment extends Fragment {
-
-    public interface OnTouchBankOffice{
-         void touchOnItem(BankOffice bankOffice);
-    }
 
     BankOfficeAdapterForFragments mAdapterForFragments;
     private OnTouchBankOffice mCallback;
@@ -24,10 +25,32 @@ public class ArticleListFragment extends Fragment {
     ArrayList<BankOffice> mBanksList=new ArrayList<BankOffice>();
     String[] mWorkTime=new String[7];
 
+    public interface OnTouchBankOffice{
+         void touchOnItem(BankOffice bankOffice);
+    }
+
+
+   private class InitAsyncTask extends AsyncTask<ArrayList<BankOffice>,Void,ArrayList<BankOffice>> {
+       @Override
+       protected ArrayList<BankOffice> doInBackground(ArrayList<BankOffice>... params) {
+           initializationBanks(params[0]);
+           return params[0];
+       }
+
+       @Override
+       protected void onPostExecute(ArrayList<BankOffice> bankOffices) {
+           mBanksList=bankOffices;
+       }
+   }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initializationBanks();
+
+        InitAsyncTask asyncTask=new InitAsyncTask();
+        asyncTask.execute(mBanksList);
+        
+        // initializationBanks();
         mCallback=(OnTouchBankOffice) getActivity();
         mAdapterForFragments = new BankOfficeAdapterForFragments(mBanksList,mCallback);
     }
@@ -48,7 +71,7 @@ public class ArticleListFragment extends Fragment {
         return view;
     }
 
-    private void initializationBanks(){
+    private void initializationBanks(ArrayList<BankOffice> banks){
 
         mWorkTime[0]="09:00-18:00";
         mWorkTime[1]="09:00-18:00";
@@ -58,16 +81,16 @@ public class ArticleListFragment extends Fragment {
         mWorkTime[5]="День счастья";
         mWorkTime[6]="Выходной";
 
-        mBanksList.add(new BankOffice("Спортивная, 5","Банк №1", 1.3f, mWorkTime,
-                "8917000000", 0));
-        mBanksList.add(new BankOffice("Спортивная, 6","Банк №2", 3.6f, mWorkTime,
-                "8917000000", 0));
-        mBanksList.add(new BankOffice("Спортивная, 7","Банк №3", 8.9f, mWorkTime,
-                "8917000000", 0));
-        mBanksList.add(new BankOffice("Спортивная, 8","Банк №4", 18.2f, mWorkTime,
-                "8917000000", 0));
-        mBanksList.add(new BankOffice("Спортивная, 9","Банк №5", 24.6f, mWorkTime,
-                "8917000000", 0));
+        for (int i = 0; i < 100; i++) {
+
+            NumberFormat value=new DecimalFormat("#0.00");
+
+            banks.add(new BankOffice("Спортивная, "+ new Random().nextInt(100),
+                    "Банк №"+i,
+                    Float.valueOf(value.format(new Random().nextFloat())),
+                    mWorkTime,
+                    "88002000600",0));
+        }
     }
 
     public float getRateValue() {
