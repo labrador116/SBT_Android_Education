@@ -1,62 +1,50 @@
 package com.app.verst.verstapp.fragments;
 
-import android.app.Fragment;
-import android.os.AsyncTask;
+        import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.app.verst.verstapp.R;
 import com.app.verst.verstapp.models.Models_Impl.BankOffice;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Random;
 
-public class ArticleListFragment extends Fragment {
+public class ArticleListFragment extends Fragment implements android.app.LoaderManager.LoaderCallbacks<ArrayList<BankOffice>> {
 
     BankOfficeAdapterForFragments mAdapterForFragments;
     private OnTouchBankOffice mCallback;
     float mRateValue;
-
+    private InitAsyncTask mAsyncTask;
     ArrayList<BankOffice> mBanksList=new ArrayList<BankOffice>();
     String[] mWorkTime=new String[7];
 
     public interface OnTouchBankOffice{
-         void touchOnItem(BankOffice bankOffice);
+        void touchOnItem(BankOffice bankOffice);
     }
-
-
-   private class InitAsyncTask extends AsyncTask<ArrayList<BankOffice>,Void,ArrayList<BankOffice>> {
-       @Override
-       protected ArrayList<BankOffice> doInBackground(ArrayList<BankOffice>... params) {
-           initializationBanks(params[0]);
-           return params[0];
-       }
-
-       @Override
-       protected void onPostExecute(ArrayList<BankOffice> bankOffices) {
-           mBanksList=bankOffices;
-       }
-   }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        InitAsyncTask asyncTask=new InitAsyncTask();
-        asyncTask.execute(mBanksList);
-        
-        // initializationBanks();
         mCallback=(OnTouchBankOffice) getActivity();
-        mAdapterForFragments = new BankOfficeAdapterForFragments(mBanksList,mCallback);
+//
+//        /****Start with AsyncTAsk***/
+//        mAsyncTask=new InitAsyncTask(new InitAsyncTask.OnAsyncTaskCallback() {
+//            @Override
+//            public void callbackAsyncTask(ArrayList<BankOffice> banks) {
+//                mAdapterForFragments.update(banks);
+//            }
+//        });
+//        mAsyncTask.execute(mBanksList);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        mAdapterForFragments = new BankOfficeAdapterForFragments(mBanksList,mCallback);
 
         View view=inflater.inflate(R.layout.bank_office_list_fragment, container, false);
 
@@ -71,26 +59,16 @@ public class ArticleListFragment extends Fragment {
         return view;
     }
 
-    private void initializationBanks(ArrayList<BankOffice> banks){
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+//        mAsyncTask.cancel(true);
+    }
 
-        mWorkTime[0]="09:00-18:00";
-        mWorkTime[1]="09:00-18:00";
-        mWorkTime[2]="09:00-18:00";
-        mWorkTime[3]="09:00-18:00";
-        mWorkTime[4]="09:00-18:00";
-        mWorkTime[5]="День счастья";
-        mWorkTime[6]="Выходной";
-
-        for (int i = 0; i < 100; i++) {
-
-            NumberFormat value=new DecimalFormat("#0.00");
-
-            banks.add(new BankOffice("Спортивная, "+ new Random().nextInt(100),
-                    "Банк №"+i,
-                    Float.valueOf(value.format(new Random().nextFloat())),
-                    mWorkTime,
-                    "88002000600",0));
-        }
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        getLoaderManager().initLoader(1,null,this).forceLoad();
     }
 
     public float getRateValue() {
@@ -101,8 +79,18 @@ public class ArticleListFragment extends Fragment {
         mRateValue = rateValue;
     }
 
+    @Override
+    public android.content.Loader<ArrayList<BankOffice>> onCreateLoader(int id, Bundle args) {
+        return new BanksListLoader(getActivity());
+    }
 
+    @Override
+    public void onLoaderReset(android.content.Loader<ArrayList<BankOffice>> loader) {
 
+    }
 
-
+    @Override
+    public void onLoadFinished(android.content.Loader<ArrayList<BankOffice>> loader, ArrayList<BankOffice> data) {
+        mAdapterForFragments.update(data);
+    }
 }

@@ -14,9 +14,13 @@ public class BankOfficeAdapterForFragments extends RecyclerView.Adapter<BanksVie
     ArticleListFragment.OnTouchBankOffice mCallback;
 
     public BankOfficeAdapterForFragments(List<BankOffice> bankOffices, ArticleListFragment.OnTouchBankOffice callback) {
-
         mBankOffices = bankOffices;
         mCallback=callback;
+    }
+
+    public void update (List<BankOffice> updateList){
+        mBankOffices=updateList;
+        notifyDataSetChanged();
     }
 
     @Override
