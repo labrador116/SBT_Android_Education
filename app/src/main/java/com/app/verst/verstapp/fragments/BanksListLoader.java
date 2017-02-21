@@ -2,9 +2,7 @@ package com.app.verst.verstapp.fragments;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
-
 import com.app.verst.verstapp.models.Models_Impl.BankOffice;
-
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -15,12 +13,15 @@ public class BanksListLoader extends AsyncTaskLoader<ArrayList<BankOffice>> {
 
     private ArrayList<BankOffice> mBanks;
 
-
     public BanksListLoader(Context context) {
         super(context);
     }
 
-
+    @Override
+    protected void onStartLoading() {
+        super.onStartLoading();
+        forceLoad();
+    }
 
     @Override
     public ArrayList<BankOffice> loadInBackground() {

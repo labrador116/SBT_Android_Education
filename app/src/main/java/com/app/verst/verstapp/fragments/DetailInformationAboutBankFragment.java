@@ -8,24 +8,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
-
 import com.app.verst.verstapp.R;
 import com.app.verst.verstapp.models.Models_Impl.BankOffice;
 
-public class InformationAboutBankFragment extends Fragment {
+public class DetailInformationAboutBankFragment extends Fragment {
 
-    private final static String EXTRA_ADDRESS_FOR_SECOND_ACTIVITY="com.app.verst.verstapp.BanksViewHolderForFragments.addressOfBank";
-    private final static String EXTRA_ANSWER_WITH_RATING="com.app.verst.verstapp.InformationAboutBankFragment.ratingOfThisBank";
+    private final static String EXTRA_ADDRESS_FOR_SECOND_ACTIVITY=
+            "com.app.verst.verstapp.BanksViewHolderForBankOfficeAdapter.addressOfBank";
+    private final static String EXTRA_ANSWER_WITH_RATING=
+            "com.app.verst.verstapp.DetailInformationAboutBankFragment.ratingOfThisBank";
 
     private BankOffice mBankoffice;
     private float mRatingOfThisBankOffice;
     private View mView;
 
-    public static InformationAboutBankFragment createInformationAboutBankFragment(BankOffice bankOffice){
-        InformationAboutBankFragment informationAboutBank = new InformationAboutBankFragment();
+    public static DetailInformationAboutBankFragment createInformationAboutBankFragment(BankOffice bankOffice){
+        DetailInformationAboutBankFragment informationAboutBank = new DetailInformationAboutBankFragment();
         Bundle args = new Bundle();
 
-        args.putParcelable(InformationAboutBankFragment.EXTRA_ADDRESS_FOR_SECOND_ACTIVITY, bankOffice);
+        args.putParcelable(DetailInformationAboutBankFragment.EXTRA_ADDRESS_FOR_SECOND_ACTIVITY, bankOffice);
         informationAboutBank.setArguments(args);
 
         return informationAboutBank;
@@ -43,7 +44,7 @@ public class InformationAboutBankFragment extends Fragment {
              mView= inflater.inflate(R.layout.bank_office_detail_view_for_fragment, container, false);
 
 
-        fillBankDetailActivity(mView);
+        fillingDetailInformationAboutBankOffice(mView);
 
         RatingBar ratingBarOfBank = (RatingBar) mView.findViewById(R.id.rating_in_bank_office_details_activity_rating_bar);
         ratingBarOfBank.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
@@ -52,7 +53,7 @@ public class InformationAboutBankFragment extends Fragment {
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
                 mRatingOfThisBankOffice=rating;
 
-                BankOfficeAdapterForFragments.OnSelectedRateListener listener = (BankOfficeAdapterForFragments.OnSelectedRateListener)getActivity();
+                BankOfficeAdapter.OnSelectedRateListener listener = (BankOfficeAdapter.OnSelectedRateListener)getActivity();
                 listener.onRateSelected(rating);
 
                 Bundle resultData = new Bundle();
@@ -62,7 +63,7 @@ public class InformationAboutBankFragment extends Fragment {
         return mView;
     }
 
-    public void fillBankDetailActivity(View view) {
+    public void fillingDetailInformationAboutBankOffice(View view) {
 
         mBankoffice = getArguments().getParcelable(EXTRA_ADDRESS_FOR_SECOND_ACTIVITY);
 

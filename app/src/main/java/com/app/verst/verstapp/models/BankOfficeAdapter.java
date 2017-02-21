@@ -1,18 +1,12 @@
 package com.app.verst.verstapp.models;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.app.verst.verstapp.BanksViewHolder;
-import com.app.verst.verstapp.InformationAboutBank;
-import com.app.verst.verstapp.fragments.ArticleListFragment;
-import com.app.verst.verstapp.fragments.InformationAboutBankFragment;
+import com.app.verst.verstapp.fragments.BanksListFragment;
 import com.app.verst.verstapp.models.Models_Impl.BankOffice;
 import com.app.verst.verstapp.R;
 
@@ -28,7 +22,7 @@ public class BankOfficeAdapter extends RecyclerView.Adapter<BanksViewHolder> {
     List<BankOffice> mBankOffices;
 
 
-    public BankOfficeAdapter(List<BankOffice> bankOffices, ArticleListFragment fragment) {
+    public BankOfficeAdapter(List<BankOffice> bankOffices, BanksListFragment fragment) {
 
         mBankOffices = bankOffices;
     }

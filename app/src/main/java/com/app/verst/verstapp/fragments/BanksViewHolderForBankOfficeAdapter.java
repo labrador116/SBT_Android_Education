@@ -6,13 +6,13 @@ import android.view.View;
 import android.widget.TextView;
 import com.app.verst.verstapp.R;
 
-public class BanksViewHolderForFragments extends RecyclerView.ViewHolder {
+public class BanksViewHolderForBankOfficeAdapter extends RecyclerView.ViewHolder {
     private CardView mCardView;
     private TextView mBankAddress;
     private TextView mBankName;
     private TextView mBankDistance;
 
-    public BanksViewHolderForFragments(View itemView) {
+    public BanksViewHolderForBankOfficeAdapter(View itemView) {
         super(itemView);
         mCardView=(CardView) itemView.findViewById(R.id.list_of_banks_card_view);
         mBankAddress = (TextView) itemView.findViewById(R.id.address_text_view);

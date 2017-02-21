@@ -10,7 +10,7 @@
 //import android.widget.Toast;
 //
 //import com.app.verst.verstapp.models.Models_Impl.BankOffice;
-//import com.app.verst.verstapp.models.BankOfficeAdapterForFragments;
+//import com.app.verst.verstapp.models.BankOfficeAdapter;
 //
 //import java.util.ArrayList;
 //
@@ -31,7 +31,7 @@
 //
 //        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
 //        mRecyclerViewForBanks.setLayoutManager(linearLayoutManager);
-//        BankOfficeAdapterForFragments adapterForBanks = new BankOfficeAdapterForFragments(mBanksList,MainActivity.this);
+//        BankOfficeAdapter adapterForBanks = new BankOfficeAdapter(mBanksList,MainActivity.this);
 //        mRecyclerViewForBanks.setAdapter(adapterForBanks);
 //    }
 //
@@ -41,7 +41,7 @@
 //        if (resultCode!= Activity.RESULT_OK)
 //            return;
 //        if (data!=null){
-//            mAnswerRating=InformationAboutBankFragment.getRatingFromBankOfficeDetailsActivity(data);
+//            mAnswerRating=DetailInformationAboutBankFragment.getRatingFromBankOfficeDetailsActivity(data);
 //        }
 //
 //        Toast.makeText(MainActivity.this, "Вы оценили отделение банка на "+mAnswerRating,Toast.LENGTH_SHORT ).show();

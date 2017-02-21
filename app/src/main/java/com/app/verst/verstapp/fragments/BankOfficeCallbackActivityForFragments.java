@@ -10,7 +10,8 @@ import android.widget.Toast;
 import com.app.verst.verstapp.R;
 import com.app.verst.verstapp.models.Models_Impl.BankOffice;
 
-public class MainActivityForFragments extends AppCompatActivity implements BankOfficeAdapterForFragments.OnSelectedRateListener, ArticleListFragment.OnTouchBankOffice {
+public class BankOfficeCallbackActivityForFragments extends AppCompatActivity implements BankOfficeAdapter.OnSelectedRateListener,
+        BanksListFragment.OnTouchBankOfficeCallback {
 
     private float mAnswerRating;
 
@@ -20,9 +21,10 @@ public class MainActivityForFragments extends AppCompatActivity implements BankO
         setContentView(R.layout.bank_office_activity_for_fragment);
 
         if (getFragmentManager().findFragmentByTag("ArtList")==null) {
-            ArticleListFragment fragment = new ArticleListFragment();
+            BanksListFragment fragment = new BanksListFragment();
             if (getResources().getConfiguration().ORIENTATION_LANDSCAPE != getResources().getConfiguration().orientation)
-                getFragmentManager().beginTransaction().add(R.id.bank_office_activity_for_fragment, fragment, "ArtList").addToBackStack("ArticleList").commit();
+                getFragmentManager().beginTransaction().add(R.id.bank_office_activity_for_fragment, fragment, "ArtList")
+                        .addToBackStack("ArticleList").commit();
         }
     }
 
@@ -38,7 +40,8 @@ public class MainActivityForFragments extends AppCompatActivity implements BankO
                 if(fragmentManager.getBackStackEntryCount()>0) {
                 fragmentManager.popBackStack("move_in_detail_card", FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     if ( mAnswerRating > 0) {
-                        Toast.makeText(MainActivityForFragments.this, "Вы оценили отделение банка на " + mAnswerRating, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(BankOfficeCallbackActivityForFragments.this, "Вы оценили отделение банка на "
+                                + mAnswerRating, Toast.LENGTH_SHORT).show();
                     }
                 }
         }
@@ -51,14 +54,12 @@ public class MainActivityForFragments extends AppCompatActivity implements BankO
 
     @Override
     public void touchOnItem(BankOffice bankOffice) {
-        Fragment fragment = InformationAboutBankFragment.createInformationAboutBankFragment(bankOffice);
+        Fragment fragment = DetailInformationAboutBankFragment.createInformationAboutBankFragment(bankOffice);
 
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.bank_office_activity_for_fragment,fragment);
         fragmentTransaction.addToBackStack("move_in_detail_card");
         fragmentTransaction.commit();
-
-
         mAnswerRating=0;
     }
 

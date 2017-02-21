@@ -3,22 +3,22 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_height="match_parent"
               android:layout_width="match_parent"
-              tools:context="com.app.verst.verstapp.fragments.MainActivityForFragments"
+              tools:context="com.app.verst.verstapp.fragments.BankOfficeCallbackActivityForFragments"
               android:orientation="horizontal">
     <fragment
+
         android:id="@+id/list_item_for_land_fragment"
-        android:name="com.app.verst.verstapp.fragments.ArticleListFragment"
+        android:name="com.app.verst.verstapp.fragments.BanksListFragment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="40">
-
+        android:layout_weight="50"
+        tools:layout="@layout/bank_office_list_fragment">
     </fragment>
 
     <FrameLayout
         android:id="@+id/bank_office_activity_for_fragment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="60">
-
+        android:layout_weight="50">
     </FrameLayout>
 </LinearLayout>

@@ -13,8 +13,8 @@ import com.app.verst.verstapp.models.Models_Impl.BankOffice;
 
 public class InformationAboutBank extends AppCompatActivity {
 
-    private final static String EXTRA_ADDRESS_FOR_SECOND_ACTIVITY="com.app.verst.verstapp.BanksViewHolderForFragments.addressOfBank";
-    private final static String EXTRA_ANSWER_WITH_RATING="com.app.verst.verstapp.InformationAboutBankFragment.ratingOfThisBank";
+    private final static String EXTRA_ADDRESS_FOR_SECOND_ACTIVITY="com.app.verst.verstapp.BanksViewHolderForBankOfficeAdapter.addressOfBank";
+    private final static String EXTRA_ANSWER_WITH_RATING="com.app.verst.verstapp.DetailInformationAboutBankFragment.ratingOfThisBank";
     private final static int REQUEST_CODE=0;
 
     private BankOffice mBankoffice;

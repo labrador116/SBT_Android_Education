@@ -1,19 +1,13 @@
 package com.app.verst.verstapp.fragments;
 
 import android.os.AsyncTask;
-
 import com.app.verst.verstapp.models.Models_Impl.BankOffice;
-
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class InitAsyncTask extends AsyncTask<ArrayList<BankOffice>,Void,ArrayList<BankOffice>> {
-
-    public interface OnAsyncTaskCallback{
-        void callbackAsyncTask(ArrayList<BankOffice> banks);
-    }
 
     OnAsyncTaskCallback mCallback;
 
@@ -34,7 +28,6 @@ public class InitAsyncTask extends AsyncTask<ArrayList<BankOffice>,Void,ArrayLis
         mWorkTime[6] = "Выходной";
 
         for (int i = 0; i < 100; i++) {
-
             NumberFormat value = new DecimalFormat("#0.00");
 
             params[0].add(new BankOffice("Спортивная, " + new Random().nextInt(100),
@@ -53,4 +46,8 @@ public class InitAsyncTask extends AsyncTask<ArrayList<BankOffice>,Void,ArrayLis
        protected void onPostExecute(ArrayList<BankOffice> bankOffices) {
           mCallback.callbackAsyncTask(bankOffices);
        }
+
+    public interface OnAsyncTaskCallback{
+        void callbackAsyncTask(ArrayList<BankOffice> banks);
+    }
    }

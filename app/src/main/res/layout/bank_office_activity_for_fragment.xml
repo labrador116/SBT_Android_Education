@@ -4,7 +4,7 @@
               android:id="@+id/bank_office_activity_for_fragment"
               android:layout_height="match_parent"
               android:layout_width="match_parent"
-              tools:context="com.app.verst.verstapp.fragments.MainActivityForFragments"
+              tools:context="com.app.verst.verstapp.fragments.BankOfficeCallbackActivityForFragments"
               android:orientation="horizontal">
 
 </LinearLayout>
