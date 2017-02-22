@@ -1,4 +1,4 @@
-package com.app.verst.verstapp.models.Models_Impl;
+package com.app.verst.verstapp.bankoffices.fragments.models.Models_Impl;
 
 import android.os.Parcel;
 import android.os.Parcelable;

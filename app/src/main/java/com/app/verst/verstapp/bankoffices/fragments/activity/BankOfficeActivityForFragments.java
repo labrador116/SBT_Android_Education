@@ -1,4 +1,4 @@
-package com.app.verst.verstapp.fragments;
+package com.app.verst.verstapp.bankoffices.fragments.activity;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -8,9 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.app.verst.verstapp.R;
-import com.app.verst.verstapp.models.Models_Impl.BankOffice;
+import com.app.verst.verstapp.bankoffices.fragments.adapter.BankOfficeAdapter;
+import com.app.verst.verstapp.bankoffices.fragments.fragments.list.BanksListFragment;
+import com.app.verst.verstapp.bankoffices.fragments.fragments.detail.DetailInformationAboutBankFragment;
+import com.app.verst.verstapp.bankoffices.fragments.models.Models_Impl.BankOffice;
 
-public class BankOfficeCallbackActivityForFragments extends AppCompatActivity implements BankOfficeAdapter.OnSelectedRateListener,
+public class BankOfficeActivityForFragments extends AppCompatActivity implements BankOfficeAdapter.OnSelectedRateListener,
         BanksListFragment.OnTouchBankOfficeCallback {
 
     private float mAnswerRating;
@@ -40,7 +43,7 @@ public class BankOfficeCallbackActivityForFragments extends AppCompatActivity im
                 if(fragmentManager.getBackStackEntryCount()>0) {
                 fragmentManager.popBackStack("move_in_detail_card", FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     if ( mAnswerRating > 0) {
-                        Toast.makeText(BankOfficeCallbackActivityForFragments.this, "Вы оценили отделение банка на "
+                        Toast.makeText(BankOfficeActivityForFragments.this, "Вы оценили отделение банка на "
                                 + mAnswerRating, Toast.LENGTH_SHORT).show();
                     }
                 }

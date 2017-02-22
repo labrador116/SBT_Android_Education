@@ -3,15 +3,15 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_height="match_parent"
               android:layout_width="match_parent"
-              tools:context="com.app.verst.verstapp.fragments.BankOfficeCallbackActivityForFragments"
+              tools:context="com.app.verst.verstapp.bankoffices.fragments.activity.BankOfficeActivityForFragments"
               android:orientation="horizontal">
     <fragment
 
         android:id="@+id/list_item_for_land_fragment"
-        android:name="com.app.verst.verstapp.fragments.BanksListFragment"
+        android:name="com.app.verst.verstapp.bankoffices.fragments.fragments.list.BanksListFragment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="50"
+        android:layout_weight="40"
         tools:layout="@layout/bank_office_list_fragment">
     </fragment>
 
@@ -19,6 +19,6 @@
         android:id="@+id/bank_office_activity_for_fragment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="50">
+        android:layout_weight="60">
     </FrameLayout>
 </LinearLayout>

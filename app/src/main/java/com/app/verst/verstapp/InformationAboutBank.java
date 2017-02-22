@@ -5,11 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.app.verst.verstapp.models.Models_Impl.BankOffice;
+import com.app.verst.verstapp.bankoffices.fragments.models.Models_Impl.BankOffice;
 
 public class InformationAboutBank extends AppCompatActivity {
 

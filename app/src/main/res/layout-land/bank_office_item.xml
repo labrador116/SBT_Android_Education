@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:id="@+id/list_of_banks_card_view">
+
+    <RelativeLayout
+        android:id="@+id/relative_layout_for_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:background="@android:color/white">
+
+        <TextView
+            android:id="@+id/distance_view_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:maxLines="2"
+            android:text="@string/distance"
+            android:layout_marginLeft="@dimen/margin_left_for_distance_text_view"
+            android:paddingTop="@dimen/padding_top_for_distance_text_view"
+            android:textSize="@dimen/text_size_for_distance_text_view"/>
+
+        <TextView
+            android:id="@+id/address_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/distance_view_text_view"
+            android:layout_marginLeft="@dimen/margin_left_for_address_image_view"
+            android:layout_alignParentLeft="true"
+            android:maxLines="2"
+            android:text="@string/address"
+            android:paddingTop="@dimen/padding_top_for_address_image_view"
+            android:textSize="@dimen/text_size_for_address_image_view"
+            />
+        <TextView
+            android:id="@+id/bank_name_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/distance_view_text_view"
+            android:layout_alignLeft="@id/address_text_view"
+            android:layout_below="@id/address_text_view"
+            android:maxLines="2"
+            android:text="@string/office_text_view"
+            android:textSize="@dimen/text_size_for_description_text_view"
+            />
+
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

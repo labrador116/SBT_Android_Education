@@ -1,4 +1,4 @@
-package com.app.verst.verstapp.fragments;
+package com.app.verst.verstapp.bankoffices.fragments.fragments.detail;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -9,7 +9,8 @@ import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import com.app.verst.verstapp.R;
-import com.app.verst.verstapp.models.Models_Impl.BankOffice;
+import com.app.verst.verstapp.bankoffices.fragments.adapter.BankOfficeAdapter;
+import com.app.verst.verstapp.bankoffices.fragments.models.Models_Impl.BankOffice;
 
 public class DetailInformationAboutBankFragment extends Fragment {
 

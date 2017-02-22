@@ -1,4 +1,4 @@
-package com.app.verst.verstapp.fragments;
+package com.app.verst.verstapp.bankoffices.fragments.adapter.holder;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;

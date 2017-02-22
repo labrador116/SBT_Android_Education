@@ -1,4 +1,4 @@
-package com.app.verst.verstapp.fragments;
+package com.app.verst.verstapp.bankoffices.fragments.fragments.list;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -8,7 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.app.verst.verstapp.R;
-import com.app.verst.verstapp.models.Models_Impl.BankOffice;
+import com.app.verst.verstapp.bankoffices.fragments.adapter.BankOfficeAdapter;
+import com.app.verst.verstapp.bankoffices.fragments.asynctask.InitAsyncTask;
+import com.app.verst.verstapp.bankoffices.fragments.loader.BanksListLoader;
+import com.app.verst.verstapp.bankoffices.fragments.models.Models_Impl.BankOffice;
 
 import java.util.ArrayList;
 

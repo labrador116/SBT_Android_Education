@@ -9,8 +9,8 @@
 //import android.telephony.PhoneNumberUtils;
 //import android.widget.Toast;
 //
-//import com.app.verst.verstapp.models.Models_Impl.BankOffice;
-//import com.app.verst.verstapp.models.BankOfficeAdapter;
+//import BankOffice;
+//import BankOfficeAdapter;
 //
 //import java.util.ArrayList;
 //

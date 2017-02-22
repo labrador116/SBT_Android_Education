@@ -1,11 +1,13 @@
-package com.app.verst.verstapp.fragments;
+package com.app.verst.verstapp.bankoffices.fragments.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.app.verst.verstapp.R;
-import com.app.verst.verstapp.models.Models_Impl.BankOffice;
+import com.app.verst.verstapp.bankoffices.fragments.fragments.list.BanksListFragment;
+import com.app.verst.verstapp.bankoffices.fragments.adapter.holder.BanksViewHolderForBankOfficeAdapter;
+import com.app.verst.verstapp.bankoffices.fragments.models.Models_Impl.BankOffice;
 import java.util.List;
 
 public class BankOfficeAdapter extends RecyclerView.Adapter<BanksViewHolderForBankOfficeAdapter> {
