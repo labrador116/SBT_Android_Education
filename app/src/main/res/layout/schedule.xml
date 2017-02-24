@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="@dimen/text_view_margin_left"
+        
         android:layout_marginTop="@dimen/margin_top_for_all_elements_text_view"
         android:layout_toLeftOf="@id/hour_1"
         android:maxLines="2"
@@ -46,7 +46,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@id/monday"
         android:layout_marginTop="@dimen/margin_top_for_all_elements_text_view"
-        android:layout_marginLeft="@dimen/text_view_margin_left"
+        
         android:layout_toLeftOf="@id/hour_2"
         android:maxLines="2"
         android:text="@string/tuesday"
@@ -70,7 +70,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@id/tuesday"
         android:layout_marginTop="@dimen/margin_top_for_all_elements_text_view"
-        android:layout_marginLeft="@dimen/text_view_margin_left"
+        
         android:layout_toLeftOf="@id/hour_3"
         android:maxLines="2"
         android:text="@string/wednesday"
@@ -94,7 +94,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@id/wednesday"
         android:layout_marginTop="@dimen/margin_top_for_all_elements_text_view"
-        android:layout_marginLeft="@dimen/text_view_margin_left"
+        
         android:layout_toLeftOf="@id/hour_4"
         android:maxLines="2"
         android:text="@string/thursday"
@@ -118,7 +118,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@id/thursday"
         android:layout_marginTop="@dimen/margin_top_for_all_elements_text_view"
-        android:layout_marginLeft="@dimen/text_view_margin_left"
+        
         android:layout_toLeftOf="@id/hour_5"
         android:maxLines="2"
         android:text="@string/friday"
@@ -142,7 +142,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@id/friday"
         android:layout_marginTop="@dimen/margin_top_for_all_elements_text_view"
-        android:layout_marginLeft="@dimen/text_view_margin_left"
+        
         android:layout_toLeftOf="@id/hour_6"
         android:maxLines="2"
         android:text="@string/saturday"
@@ -166,7 +166,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@id/saturday"
         android:layout_marginTop="@dimen/margin_top_for_all_elements_text_view"
-        android:layout_marginLeft="@dimen/text_view_margin_left"
+        
         android:layout_toLeftOf="@id/hour_7"
         android:maxLines="2"
         android:text="@string/sunday"

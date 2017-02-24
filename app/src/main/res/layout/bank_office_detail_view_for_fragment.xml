@@ -25,8 +25,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="@dimen/padding_left_for_address_third_text_view"
-            android:layout_marginTop="@dimen/padding_top_for_address_third_text_view"
+            android:layout_marginLeft="@dimen/padding_left_and_top_for_address_third_text_view"
+            android:layout_marginTop="@dimen/padding_left_and_top_for_address_third_text_view"
             android:layout_toLeftOf="@+id/rectangle_with_line"
             android:maxLines="2"
             android:text="@string/address"
@@ -59,8 +59,8 @@
 
         <ImageButton
             android:id="@+id/rectangle_with_line"
-            android:layout_width="@dimen/layout_width_for_rectangle_image_button"
-            android:layout_height="@dimen/layout_height_for_rectangle_image_button"
+            android:layout_width="@dimen/layout_width_and_height_for_rectangle_image_button"
+            android:layout_height="@dimen/layout_width_and_height_for_rectangle_image_button"
             android:layout_alignParentRight="true"
             android:src="@drawable/rectangle"
             android:background="@android:color/transparent"
@@ -162,7 +162,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_toLeftOf="@id/phone_button_image_view"
-        android:layout_marginLeft="@dimen/margin_left_for_phone_description_text_view"
         android:text="@string/phone_description"
         android:maxLines="2"
        />
