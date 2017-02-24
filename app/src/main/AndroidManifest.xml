@@ -11,7 +11,8 @@
         <activity android:name=".bankoffices.fragments.activity.BankOfficeActivityForFragments">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
+                <data android:scheme="geo"/>
+                <uses-permission android:name="android.permission.CALL_PHONE" />
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>

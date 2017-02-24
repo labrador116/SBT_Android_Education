@@ -1,13 +1,18 @@
 package com.app.verst.verstapp.bankoffices.fragments.fragments.detail;
 
 import android.app.Fragment;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.app.verst.verstapp.R;
 import com.app.verst.verstapp.bankoffices.fragments.adapter.BankOfficeAdapter;
 import com.app.verst.verstapp.bankoffices.fragments.models.Models_Impl.BankOffice;
@@ -22,6 +27,8 @@ public class DetailInformationAboutBankFragment extends Fragment {
     private BankOffice mBankoffice;
     private float mRatingOfThisBankOffice;
     private View mView;
+    private ImageButton mGeoButton;
+    private RelativeLayout mClickableLayotWithPhoneNumber;
 
     public static DetailInformationAboutBankFragment createInformationAboutBankFragment(BankOffice bankOffice){
         DetailInformationAboutBankFragment informationAboutBank = new DetailInformationAboutBankFragment();
@@ -61,8 +68,37 @@ public class DetailInformationAboutBankFragment extends Fragment {
                 resultData.putFloat(EXTRA_ANSWER_WITH_RATING,mRatingOfThisBankOffice);
             }
         });
+
+        mGeoButton=(ImageButton) mView.findViewById(R.id.rectangle_with_line);
+        mGeoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Uri geoLocation = Uri.parse("geo:54.354183,37.34011");
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(geoLocation);
+
+                if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+                    startActivity(intent);
+                }
+            }
+        });
+
+        mClickableLayotWithPhoneNumber = (RelativeLayout) mView.findViewById(R.id.relative_layout_for_phone_number);
+        mClickableLayotWithPhoneNumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + mBankoffice.getPhoneNumber()));
+                if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+                    startActivity(intent);
+                }
+            }
+        });
+
         return mView;
     }
+
 
     public void fillingDetailInformationAboutBankOffice(View view) {
 

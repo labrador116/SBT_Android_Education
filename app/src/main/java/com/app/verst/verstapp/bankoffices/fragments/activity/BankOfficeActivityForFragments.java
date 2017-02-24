@@ -38,6 +38,10 @@ public class BankOfficeActivityForFragments extends AppCompatActivity implements
 
         if(fragmentManager.getBackStackEntryCount()==1){
             super.onBackPressed();
+            if ( mAnswerRating > 0) {
+                Toast.makeText(BankOfficeActivityForFragments.this, "Вы оценили отделение банка на "
+                        + mAnswerRating, Toast.LENGTH_SHORT).show();
+            }
             this.finish();
         } else {
                 if(fragmentManager.getBackStackEntryCount()>0) {
@@ -45,6 +49,7 @@ public class BankOfficeActivityForFragments extends AppCompatActivity implements
                     if ( mAnswerRating > 0) {
                         Toast.makeText(BankOfficeActivityForFragments.this, "Вы оценили отделение банка на "
                                 + mAnswerRating, Toast.LENGTH_SHORT).show();
+                        mAnswerRating=0f;
                     }
                 }
         }

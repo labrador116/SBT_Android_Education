@@ -142,7 +142,6 @@
         android:clickable="true"
         android:layout_below="@id/schedule_include"
         android:layout_alignLeft="@id/status_text_view"
-        android:layout_alignParentBottom="true"
         android:layout_marginTop="@dimen/margin_top_for_relative_clickable_layout"
         >
 
@@ -168,27 +167,28 @@
         android:maxLines="2"
        />
 
-    <TextView
-        android:id="@+id/phone_number_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/id_phone_description_text_view_button"
-        android:layout_toLeftOf="@id/phone_button_image_view"
-        android:layout_alignLeft="@id/id_phone_description_text_view_button"
-        android:text="@string/phone_number"
-        android:background="@android:color/transparent"
-        />
+        <TextView
+            android:id="@+id/phone_number_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/phone_number"
+            android:background="@android:color/transparent"
+            android:layout_below="@+id/id_phone_description_text_view_button"
+            />
+    </RelativeLayout>
 
         <RatingBar
             android:id="@+id/rating_in_bank_office_details_activity_rating_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/phone_number_button"
             android:clickable="true"
-            android:layout_marginTop="10dp"
+            android:layout_alignLeft="@id/status_text_view"
+            android:layout_marginTop="0dp"
             android:theme="@style/MyRatingBar"
-            />
-    </RelativeLayout>
+            android:isIndicator="false"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/relative_layout_for_phone_number"/>
+
     </RelativeLayout>
 </ScrollView>
 
