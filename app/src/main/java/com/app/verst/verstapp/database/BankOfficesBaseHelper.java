@@ -1,10 +1,9 @@
-package com.app.verst.verstapp.bankoffices.fragments.models.Models_Impl.data;
+package com.app.verst.verstapp.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.app.verst.verstapp.database.BankOfficesDBSchema;
 import com.app.verst.verstapp.database.BankOfficesDBSchema.BankOfficesWorkTime;
 import com.app.verst.verstapp.database.BankOfficesDBSchema.bankOfficesTable;
 

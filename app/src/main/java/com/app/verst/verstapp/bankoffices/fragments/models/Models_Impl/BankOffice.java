@@ -16,11 +16,12 @@ public class BankOffice implements Parcelable {
     private String mPhoneNumber;
     private int mRatingQualityOfWork;
 
-    public BankOffice(String address, String name, float distance, String[] workTime, String phoneNumber, int ratingQualityOfWork) {
+    public BankOffice(){}
+
+    public BankOffice(String address, String name, float distance, String phoneNumber, int ratingQualityOfWork) {
         mAddress = address;
         mName = name;
         mDistance = distance;
-        mWorkTime = workTime;
         mPhoneNumber = phoneNumber;
         mRatingQualityOfWork = ratingQualityOfWork;
     }
