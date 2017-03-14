@@ -15,6 +15,8 @@ import com.app.verst.verstapp.bankoffices.fragments.models.Models_Impl.BankOffic
 
 public class BanksListFragment extends Fragment {
 
+
+    public static final String SharedPreferencesNameForQualityRating = "quality_shared_preferences";
     private BankOfficeAdapter mAdapterForFragments;
     private OnTouchBankOfficeCallback mTouchCallback;
     private CreateAsyncScheme mScheme;

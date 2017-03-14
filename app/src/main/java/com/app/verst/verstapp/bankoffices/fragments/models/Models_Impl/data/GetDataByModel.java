@@ -1,12 +1,28 @@
 package com.app.verst.verstapp.bankoffices.fragments.models.Models_Impl.data;
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+
 import com.app.verst.verstapp.bankoffices.fragments.models.Models_Impl.BankOffice;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class GetDataByModel {
+
+    private Context mContext;
+    private SQLiteDatabase mDatabase;
+
+    public GetDataByModel(Context context){
+        mContext=context.getApplicationContext();
+        mDatabase = new BankOfficesBaseHelper(mContext).getWritableDatabase();
+    }
+
+    public ArrayList<BankOffice> loadDataFromDB(){
+        //ToDo
+    }
 
     public static ArrayList<BankOffice> getData(){
 

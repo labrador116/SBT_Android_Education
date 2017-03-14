@@ -25,7 +25,8 @@ public class BanksListLoader extends AsyncTaskLoader<ArrayList<BankOffice>> {
 
     @Override
     public ArrayList<BankOffice> loadInBackground() {
-        mBanks= GetDataByModel.getData();
+        GetDataByModel dataByModel = new GetDataByModel(getContext());
+        mBanks= dataByModel.loadDataFromDB();
         return mBanks;
     }
 

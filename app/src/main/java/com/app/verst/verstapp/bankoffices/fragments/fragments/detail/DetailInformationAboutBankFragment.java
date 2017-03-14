@@ -1,10 +1,14 @@
 package com.app.verst.verstapp.bankoffices.fragments.fragments.detail;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +19,7 @@ import android.widget.TextView;
 
 import com.app.verst.verstapp.R;
 import com.app.verst.verstapp.bankoffices.fragments.adapter.BankOfficeAdapter;
+import com.app.verst.verstapp.bankoffices.fragments.fragments.list.BanksListFragment;
 import com.app.verst.verstapp.bankoffices.fragments.models.Models_Impl.BankOffice;
 
 public class DetailInformationAboutBankFragment extends Fragment {
@@ -57,15 +62,16 @@ public class DetailInformationAboutBankFragment extends Fragment {
         RatingBar ratingBarOfBank = (RatingBar) mView.findViewById(R.id.rating_in_bank_office_details_activity_rating_bar);
         ratingBarOfBank.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
 
+            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                mRatingOfThisBankOffice=rating;
-
                 BankOfficeAdapter.OnSelectedRateListener listener = (BankOfficeAdapter.OnSelectedRateListener)getActivity();
                 listener.onRateSelected(rating);
 
-                Bundle resultData = new Bundle();
-                resultData.putFloat(EXTRA_ANSWER_WITH_RATING,mRatingOfThisBankOffice);
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences(BanksListFragment.SharedPreferencesNameForQualityRating, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putFloat(mBankoffice.getName(), rating);
+                editor.commit();
             }
         });
 
@@ -114,6 +120,10 @@ public class DetailInformationAboutBankFragment extends Fragment {
 
         TextView distanceView = (TextView) view.findViewById(R.id.distance_text_view);
         distanceView.setText(String.valueOf(mBankoffice.getDistance()));
+
+        RatingBar ratingBar = (RatingBar) view.findViewById(R.id.rating_in_bank_office_details_activity_rating_bar);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(BanksListFragment.SharedPreferencesNameForQualityRating, Context.MODE_PRIVATE);
+        ratingBar.setRating(sharedPreferences.getFloat(mBankoffice.getName(),0));
 
         TextView timeView;
         String [] workTime=mBankoffice.getWorkTime();
