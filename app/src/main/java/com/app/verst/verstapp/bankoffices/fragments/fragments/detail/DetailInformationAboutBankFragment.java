@@ -99,7 +99,6 @@ public class DetailInformationAboutBankFragment extends Fragment {
         return mView;
     }
 
-
     public void fillingDetailInformationAboutBankOffice(View view) {
 
         mBankoffice = getArguments().getParcelable(EXTRA_ADDRESS_FOR_SECOND_ACTIVITY);
