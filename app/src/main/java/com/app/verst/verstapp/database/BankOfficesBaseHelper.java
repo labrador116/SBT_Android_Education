@@ -4,16 +4,19 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.app.verst.verstapp.bankoffices.fragments.models.Models_Impl.data.GetDataByModel;
 import com.app.verst.verstapp.database.BankOfficesDBSchema.BankOfficesWorkTime;
 import com.app.verst.verstapp.database.BankOfficesDBSchema.bankOfficesTable;
 
 public class BankOfficesBaseHelper extends SQLiteOpenHelper {
     public static final String NAME = "bankOffices.db";
     public static final int VERSION = 1;
+    private Context mContext;
 
 
     public BankOfficesBaseHelper(Context context) {
         super(context, NAME, null, VERSION);
+        mContext=context;
     }
 
     @Override
@@ -39,6 +42,9 @@ public class BankOfficesBaseHelper extends SQLiteOpenHelper {
                 BankOfficesWorkTime.Columns.SUNDAY +
                 ")"
         );
+
+        GetDataByModel dataByModel = new GetDataByModel(mContext);
+        dataByModel.getData();
     }
 
     @Override

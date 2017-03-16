@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 
 import com.app.verst.verstapp.bankoffices.fragments.models.Models_Impl.BankOffice;
 import com.app.verst.verstapp.database.BankOfficesBaseHelper;
@@ -28,7 +29,7 @@ public class GetDataByModel {
     }
 
     public ArrayList<BankOffice> loadDataFromDB(){
-        BankOfficesCursorWrapper cursorWrapper = queryBankOffices(null, null);
+        BankOfficesCursorWrapper cursorWrapper = queryBankOffices(mContext);
         ArrayList<BankOffice> bankOffices = new ArrayList<>();
         String[] workTime = getWorkTime();
 
@@ -70,16 +71,15 @@ public class GetDataByModel {
 
     }
 
-    private BankOfficesCursorWrapper queryBankOffices(String whereClause, String[] whereArgs){
-        Cursor cursor = mDatabase.query(
-                bankOfficesTable.NAME,
-                null,
-                whereClause,
-                whereArgs,
+    private BankOfficesCursorWrapper queryBankOffices(Context context){
+        Cursor cursor = context.getContentResolver().query(
+                Uri.parse("content://com.app.verst.verstapp.provider"),
+                 null,
                 null,
                 null,
                 null
         );
+
         return new BankOfficesCursorWrapper(cursor);
     }
 
